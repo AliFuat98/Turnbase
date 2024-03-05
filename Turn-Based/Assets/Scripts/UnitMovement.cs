@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class UnitMovement : MonoBehaviour {
-  Vector3 targetPosition = new Vector3(5,0,5);
+  Vector3 targetPosition;
 
   void Move(Vector3 targetPosition) {
     this.targetPosition = targetPosition;
@@ -14,6 +14,10 @@ public class UnitMovement : MonoBehaviour {
       Vector3 moveDirection = (targetPosition - transform.position).normalized;
       float moveSpeed = 4f;
       transform.position += moveSpeed * Time.deltaTime * moveDirection;
+    }
+
+    if (Input.GetMouseButtonDown(0)) {
+      Move(MouseWorld.GetPosition());
     }
   }
 }
